@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8" />
+
+<title>Drop Menu</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+</head>
+
+<body>
+
+<style>
+
+body {
+
+margin: 0;
+
+}
+
+/* zero out all padding/margin */
+
+* {
+
+box-sizing: border-box;
+
+}
+
+.outer-navigation-wrapper {
+
+background-color: #B771E7;
+
+}
+
+/* main navigation wrapper */
+
+.main-navigation-wrapper {
+
+width: 80%;
+
+margin: 0 auto;
+
+font-family: helvetica, sans-serif;
+
+}
+
+@media (max-width: 960px) {
+
+.main-navigation-wrapper {
+
+width: 100%;
+
+}
+
+}
+
+.main-navigation {
+
+display: -webkit-box;
+
+display: -ms-flexbox;
+
+display: flex;
+
+-webkit-box-pack: end;
+
+-ms-flex-pack: end;
+
+justify-content: flex-end;
+
+margin: 0;
+
+padding: 0;
+
+font-size: 18px;
+
+line-height: 28px;
+
+}
+
+@media screen and (max-width: 960px) {
+
+.main-navigation {
+
+display: none;
+
+}
+
+}
+
+.main-navigation li {
+
+margin: 0;
+
+padding: 0;
+
+list-style: none;
+
+position: relative;
+
+}
+
+@media screen and (max-width: 960px) {
+
+.main-navigation li {
+
+position: static;
+
+}
+
+}
+
+.main-navigation li i {
+
+font-size: 16px;
+
+margin: 0 0 0 5px;
+
+padding: 0;
+
+}
+
+@media screen and (max-width: 960px) {
+
+.main-navigation li {
+
+width: 100%;
+
+}
+
+}
+
+.main-navigation a {
+
+text-decoration: none;
+
+color: #fff;
+
+display: block;
+
+padding: 15px;
+
+font-size: 14px;
+
+}
+
+@media screen and (max-width: 960px) {
+
+.main-navigation a {
+
+padding: 15px 25px;
+
+}
+
+}
+
+.main-navigation a:hover {
+
+color: #000;
+
+}
+
+/* drop menu */
+
+.main-navigation .drop-menu {
+
+position: absolute;
+
+top: 3.2em;
+
+left: 0;
+
+background-color: #fff;
+
+border: 1px solid #f2f2f2;
+
+margin: 0;
+
+padding: 0;
+
+width: 250px;
+
+box-shadow: 7px 5px 7px #ccc;
+
+}
+
+@media screen and (max-width: 960px) {
+
+.main-navigation .drop-menu {
+
+top: 0;
+
+left: 0;
+
+border: none;
+
+margin: 0;
+
+padding: 0;
+
+width: 100%;
+
+box-shadow: none;
+
+height: 100%;
+
+}
+
+}
+
+.drop-menu li {
+
+border-bottom: 1px solid #f2f2f2;
+
+}
+
+.drop-menu a {
+
+padding: 15px 15px;
+
+color: #000;
+
+}
+
+@media screen and (max-width: 960px) {
+
+.drop-menu a {
+
+padding: 15px 25px;
+
+color: #000;
+
+}
+
+}
+
+.drop-menu a:hover {
+
+background-color: #f2f2f2;
+
+}
+
+/* drop menu sub */
+
+.main-navigation .drop-menu-sub ul {
+
+background-color: #fff;
+
+}
+
+@media screen and (max-width: 960px) {
+
+.main-navigation .drop-menu-sub ul {
+
+position: absolute;
+
+top: 0;
+
+left: 0;
+
+border: none;
+
+margin: 0;
+
+padding: 0;
+
+width: 100%;
+
+box-shadow: none;
+
+height: 100%;
+
+}
+
+}
+
+.drop-menu-sub ul {
+
+margin: 0;
+
+padding: 0;
+
+}
+
+.drop-menu-sub ul li {
+
+border: 1px solid #f2f2f2;
+
+}
+
+/* mobile menu icon */
+
+.mobile-menu-icon {
+
+display: none;
+
+}
+
+@media screen and (max-width: 960px) {
+
+.mobile-menu-icon {
+
+display: block;
+
+text-align: right;
+
+color: #fff;
+
+padding: 15px 40px;
+
+font-size: 20px;
+
+}
+
+.main-navigation li {
+
+width: 100%;
+
+}
+
+}
+
+.drop-menu .list-header {
+
+font-size: 20px;
+
+padding: 20px 15px 20px 25px;
+
+color: #B771E7;
+
+display: none;
+
+}
+
+@media screen and (max-width: 960px) {
+
+.drop-menu .list-header {
+
+display: block;
+
+}
+
+}
+
+.drop-menu .close-sub-menu {
+
+background-color: #B771E7;
+
+color: #fff;
+
+text-align: right;
+
+border-bottom: none;
+
+padding: 15px;
+
+display: none;
+
+}
+
+@media screen and (max-width: 960px) {
+
+.drop-menu .close-sub-menu {
+
+display: block;
+
+}
+
+}
+
+</style>
+
+<script>
+
+$(document).ready(function(){
+
+//hide drop menu and drop menu sub
+
+$('.drop-menu, .drop-menu-sub ul').hide();
+
+//show drop menu
+
+$('.main-navigation li').css('cursor', 'pointer').click(function() {
+
+$(this).find('.drop-menu').slideDown().end().siblings().find('ul').hide();
+
+});
+
+// show mobile menu icon at 960px window width
+
+$('.mobile-menu-icon').css('cursor','pointer').click(function(){
+
+$('.main-navigation').slideToggle();
+
+});
+
+//show drop menu sub
+
+$('.drop-menu-sub').css('cursor', 'pointer').click(function() {
+
+$(this).find('ul').slideToggle().end().siblings().find('ul').hide();
+
+});
+
+// close sub menu
+
+$('.close-sub-menu').css('cursor','pointer').click(function(){
+
+$(this).parent('ul').slideUp();
+
+return false;
+
+});
+
+//drop menu slide up if window width more than 960px
+
+$('.drop-menu').mouseleave(function(){
+
+if ($(window).width() > 960) {
+
+$('.drop-menu').slideUp();
+
+}                            
+
+});
+
+//realign main-navigation and hide drop menu at 960px window width
+
+$(window).resize(function(){
+
+if ($(window).width() > 960) {
+
+$('.main-navigation').css('display', 'flex');
+
+$('.drop-menu').hide();
+
+}
+
+else if ($(window).width() < 960) {
+
+$('.main-navigation').css('display', 'none');
+
+}
+
+});
+
+});
+
+</script>
+
+<div class="outer-navigation-wrapper">
+
+<nav class="main-navigation-wrapper">
+
+<div class="mobile-menu-icon"><i class="fa fa-bars"></i></div>
+
+<ul class="main-navigation">
+
+<li><a href="#">Home</a></li>
+
+<li><a href="#">Contact Us</a></li>
+
+<li><a href="#">Corporate</a></li>
+
+<li><a href="#">Embroidery</a></li>
+
+<li><a href="#">Everything Web</a>
+
+</li>
+
+<li><a href="#">Self Publishing</a></li>
+
+<li><a href="#">Celebration Stationary<i class="fa fa-caret-down" aria-hidden="true"></i></a>
+
+<ul class="drop-menu">
+
+<li class="close-sub-menu">Main Menu<i class="fa fa-caret-up" aria-hidden="true"></i></li>
+
+<li class="list-header">Celebration Stationary</li>
+
+<li><a href="#">Celebrations</a></li>
+
+<li><a href="#">Wedding Stationary Items</a></li>
+
+<li><a href="#">FAQ</a></li>
+
+<li class="drop-menu-sub"><a href="#">Make Your Choices<i class="fa fa-caret-down" aria-hidden="true"></i></a>
+
+<ul>
+
+<li class="close-sub-menu">Main Menu<i class="fa fa-caret-up" aria-hidden="true"></i></li>
+
+<li class="list-header">Make Your Choices</li>
+
+<li><a href="#">Base Choices</a></li>
+
+<li><a href="#">Card Choices</a></li>
+
+<li><a href="#">Accessory Choices</a></li>
+
+<li><a href="#">Weddding Invitation Wording</a></li>
+
+<li><a href="#">Weddding Evening Invitation Wording</a></li>
+
+<li><a href="#">Font Choices</a></li>
+
+</ul>
+
+<!-- end drop-menu -->
+
+</li>
+
+</ul>
+
+<!-- end drop-menu -->
+
+</ul>
+
+<!--end main-navigation-->
+
+</nav>
+
+<!-- end main-navigation-wrapper -->
+
+</div>
+
+<!-- end outer-navigation-wrapper -->
+
+</body>
+
+</html>

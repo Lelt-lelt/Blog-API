@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript">
+    $("#menu > ul > li").each(function(){
+  var maxHeight = 0;
+  var myUl=$("ul", $(this));
+  
+  myUl.each(function(){
+    maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+  });
+
+  myUl.height(maxHeight);
+});
+  </script>
+</head>
+<style type="text/css">
+  html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+#main {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+#menu:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+#menu {
+  background-color: #000;
+}
+
+#menu ul {
+  list-style: none;
+  position: relative;
+  float: left;
+  margin: 0;
+  padding: 0
+}
+
+#menu ul a {
+  display: block;
+  color: #231F20;
+  font-size: 12px;
+}
+
+#menu ul li {
+  float: left;
+  margin: 0;
+  padding: 0
+}
+
+#menu ul li.current {
+  background: #ddd
+}
+
+#menu ul ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  border: 1px solid #4598cc;
+  padding: 20px 0px;
+  z-index: 5;
+  display:block;
+  visibility:hidden;
+}
+
+#menu ul ul li {
+  float: none;
+  width: 200px;
+  padding: 5px 10px;
+}
+
+#menu ul ul a {
+  color: #4598cc;
+  display: block;
+  padding: 5px 0;
+  font-style: 14px;
+  font-family: FFMarkStdBook;
+}
+
+#menu ul ul ul {
+  top: -1px;
+  left: 100%;
+  height: auto;
+}
+
+#menu ul li:hover>ul {
+  visibility:visible;
+}
+
+#menu>ul>li {
+  float: left;
+  margin-right: 47px;
+  position: relative;
+}
+
+#menu>ul>li:last-child {
+  margin-right: 0px;
+}
+
+#menu>ul>li>a {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+#menu>ul>li>ul b {
+  color: #4598cc;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+</style>
+<body>
+<script src="bootstrap/jquery.min.js"></script>
+<div id="main">
+  <nav id="menu">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Services</a>
+        <ul>
+          <li><a href="#">Link One ></a>
+            <ul>
+              <li><a href="#">Child Link One</a></li>
+              <li><a href="#">Child Link One</a></li>
+              <li><a href="#">Child Link One</a></li>
+              <li><a href="#">Child Link One</a></li>
+              <li><a href="#">Child Link One</a></li>
+              <li><a href="#">Child Link One</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Link One ></a>
+            <ul>
+              <li><a href="#">Child Link One</a></li>
+              <li><a href="#">Child Link One</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Link One ></a>
+            <ul>
+              <li><a href="#">Child Link One</a></li>
+              <li><a href="#">Child Link One</a></li>
+              <li><a href="#">Child Link One</a></li>
+              <li><a href="#">Child Link One</a></li>
+              <li><a href="#">Child Link One</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#">Projects</a>
+        <ul>
+          <li><a href="#"> Link One</a>
+            <ul>
+              <li><a href="#">Child Link One</a></li>
+              <li><a href="#">Child Link One</a></li>
+              <li><a href="#">Child Link One</a></li>
+              <li><a href="#">Child Link One</a></li>
+              <li><a href="#">Child Link One</a></li>
+            </ul>
+          </li>
+          <li><a href="#"> Link One</a></li>
+          <li><a href="#"> Link One</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+</body>
+</html>

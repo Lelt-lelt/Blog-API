@@ -1,0 +1,168 @@
+
+<script type="text/javascript" src="bootstrap/js/jquery.min.js"></script><script type="text/javascript">
+    var button = document.getElementById('dropdown-trigger'),
+    dropdown = document.getElementById('dropdown'),
+    //getElementsByClassName isn't supported past IE 9
+    //getElementsByTageName is more reliable 
+    //www.w3schools.com/jsref/met_document_getelementsbyclassname.asp
+    //www.w3schools.com/jsref/met_document_getelementsbytagname.asp
+    dropdown_ = document.getElementsByTagName('li');
+
+//addeventlistener isn't supported in versions of IE past 9 
+//www.w3schools.com/jsref/met_document_addeventlistener.asp
+button.onmouseover = displayDropdown;
+button.onmouseout = removeDropdown;
+
+for(var i = 0; i < dropdown_.length; i++){
+    
+    if(dropdown_[i].className === 'dropdown_'){
+        dropdown_[i].onmouseover = function(){
+            var drop = this.getElementsByTagName('ul')[0];
+            //classList isn't supported past IE 10 
+            //www.w3schools.com/jsref/prop_element_classlist.asp
+            //www.w3schools.com/jsref/prop_html_classname.asp
+            drop.className = 'sub-dropdown';
+        }
+        dropdown_[i].onmouseout = function(){
+            var drop = this.getElementsByTagName('ul')[0];
+            drop.className = 'sub-dropdown none';  
+        }
+    }
+}
+    
+function displayDropdown() {
+  dropdown.className = 'dropdown';
+}
+
+function removeDropdown() {
+  dropdown.className = 'dropdown none';
+}
+</script>
+<style type="text/css">
+    * {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: open-sans,Arial,,sans-serif;
+  list-style: none;
+}
+
+.dropdown-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+button {
+  border: none;
+  background-color: #74c005;
+  padding: 20px;
+
+}
+
+.nav-link {
+  display: block;
+  background-color: #0074e4;
+  padding: 20px;
+}
+
+.dropdown-list {
+  display: flex;
+  flex-direction: column;
+}
+/*make outer submenu position relative and interal element position absolute*/
+.dropdown_{
+    position:relative;
+}
+.sub-dropdown{
+    position:absolute;
+    top:0;
+    width:50px;
+    right:-50px;
+}
+.sub-dropdown > li {
+  background-color: #74c005;
+  padding: 20px;
+}
+
+.none {
+  display: none;
+}
+
+</style>
+  <section class="dropdown-container">
+    
+      
+    <nav id="dropdown-trigger" class="dropdown-list ">
+      
+     <button>Dropdown</button>
+        
+       <!--change the the trigger event to the actual menu so that hovering over the sub menu doesn't change main menu state-->
+        
+      <ul id='dropdown' class="dropdown none">
+          <!--add 'none' class an 'dropdown' id to the ul element-->
+          
+        <li class="dropdown_">
+            <!--add class to each dropdown item-->
+          <span class="nav-link">Home</span>
+          <ul class="sub-dropdown none">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </li>
+
+        <li class="dropdown_">
+          <span class="nav-link">About</span>
+          <ul class="sub-dropdown none">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </li>
+
+
+        <li class="dropdown_">
+          <span class="nav-link">Rentals</span>
+          <ul class="sub-dropdown none">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </li>
+
+        <li class="dropdown_">
+          <span class="nav-link">Design</span>
+          <ul class="sub-dropdown none">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </li>
+
+        <li class="dropdown_">
+          <span class="nav-link">Work</span>
+          <ul class="sub-dropdown none">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </section>

@@ -1,0 +1,73 @@
+<ul class="nav">
+  <li class="top"><a class="top_link">Grades</a>
+    <ul class="sub">
+      <li><a class="fly">Grade 1</a></li>
+    </ul>
+  </li>
+</ul>
+/* the ul elements */
+<style>
+.nav {
+  list-style: none;
+  position: relative;
+}
+
+.nav ul {
+  visibility: hidden;
+  opacity: 0;
+  transition-property: visibility, opacity;
+  -moz-transition-property: visibility, opacity;
+  -webkit-transition-property: visibility, opacity;
+  
+  transition-timing-function: linear;
+  -moz-transition-function: linear;
+  -webkit-transition-function: linear;
+  
+  transition-duration: 0s, 0.5s;
+  -moz-transition-duration: 0s, 0.5s;
+  -webkit-transition-duration: 0s, 0.5s;
+  
+  transition-delay: 0.5s, 0s;
+  -moz-transition-delay: 0.5s, 0s;
+  -webkit-transition-delay: 0.5s, 0s;
+}
+
+.nav li {
+  position: relative;
+}
+
+.nav li.top {
+  float: left;
+}
+
+.nav li a.top_link {
+  float: left;
+  height: 36px;
+}
+
+.nav ul {
+  position: absolute;
+  visibility: hidden;
+}
+
+.nav li:hover > ul {
+  visibility: visible;
+  opacity: 1;
+  transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -webkit-transition-duration: 0s;
+  
+  transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+}
+
+.nav li ul.sub {
+  background: #fff;
+  white-space: nowrap;
+  left: 0;
+  top: 100%;
+}
+</style>
+
+<!-- http://jsfiddle.net/mseifert/5uy1789s/ -->

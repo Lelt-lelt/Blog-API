@@ -1,0 +1,33 @@
+<html>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<li class="dropdown menu-btn">
+  <a id=t estmanage class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-database fa-lg "></i> Manage <span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li><a id="btn_addnew" href="#">Create Audit</a></li>
+    <li><a href="store_departments_list.php">Departments</a></li>
+    <li><a href="store_product_management2.php">Products</a></li>
+    <li class="dropdown-submenu">
+      <a class="subhover" tabindex="-1" href="#"> Data Entry <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="labour_costs.php"> Labour Costs </a></li>
+        <li><a href="purchases_list.php"> Purchases </a></li>
+        <li style="cursor: pointer;"><a data-toggle="modal" data-target="#salesModal">Sales</a></li>
+        <li><a href="waste_list.php"> Wastage </a></li>
+      </ul>
+    </li>
+  </ul>
+</li>
+</html>
+
+<style>
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+  display: none;
+}
+
+.subhover:hover ~ .dropdown-menu, .dropdown-menu:hover {
+  display: block;
+}</style>
